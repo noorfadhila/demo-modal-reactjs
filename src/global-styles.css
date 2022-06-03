@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+  
+body{
+    margin: 0;
+    background-color: #D9F1F1;
+}
+
+.flex-col {
+    float: left;
+    width: 30%;
+}
+  
+/* Clear floats after the columns */
+.flex-container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.btn{
+    padding: 8px 15px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn.blue {
+    background-color: lightseagreen;
+}
+
+.btn.red {
+    background-color: red;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
