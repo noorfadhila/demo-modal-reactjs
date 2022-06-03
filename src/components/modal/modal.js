@@ -15,13 +15,27 @@ export default function Modal (props){
         isOpen ? addBodyClass("modal-open") : removeBodyClass("modal-open");
     },[props.open, isOpen])
 
+    useEffect(() => {
+        const close = (e) => {
+          if(e.keyCode === 27){
+            props.close()
+          }
+        }
+        window.addEventListener('keydown', close)
+        return () => window.removeEventListener('keydown', close)
+    },[])
+
+    if(!props.open){
+        return null;
+    }
+
     const show = props.open ? "show" : "hide";
     const modalStyle = `modal ${show}`
     
     return(
-        <div className={modalStyle}>
+        <div className={modalStyle}  onClick={props.close}>
             <div className="modal-dialog">
-                <div className="modal-content">
+                <div className="modal-content" onClick={e => e.stopPropagation()}>
                     <div className="modal-header">
                         <h5 className="modal-title">{datas.title}</h5>
                         <button className="btn-close-modal" onClick={props.close}>X</button>
